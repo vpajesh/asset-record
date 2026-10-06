@@ -1,0 +1,25 @@
+# Builds an installable Android APK from dist/web (Capacitor). Download it from the run's "Artifacts".
+name: Build Android APK
+on:
+  push:
+    branches: [main]
+    paths: ["dist/web/**", "native/**", ".github/workflows/android.yml"]
+  workflow_dispatch:
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: native } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "21" }
+      - uses: android-actions/setup-android@v3
+      - run: npm ci
+      - run: rm -rf www && cp -r ../dist/web www && npx cap sync android
+      - run: chmod +x android/gradlew && cd android && ./gradlew --no-daemon assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AssetRecord-android-apk
+          path: native/android/app/build/outputs/apk/debug/app-debug.apk

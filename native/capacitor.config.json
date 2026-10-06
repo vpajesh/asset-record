@@ -1,0 +1,6 @@
+{
+  "appId": "com.assetrecord.app",
+  "appName": "Asset Record",
+  "webDir": "www",
+  "ios": { "contentInset": "never" }
+}

@@ -1,0 +1,13 @@
+node_modules/
+native/www/
+native/ios/App/App/public/
+native/android/app/src/main/assets/public/
+native/android/.gradle/
+native/android/app/build/
+native/android/build/
+.DS_Store
+# never commit workbook data
+*.xlsm
+*.xlsx
+AssetApp_master*.json
+seed.json
