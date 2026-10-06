@@ -21,5 +21,5 @@ jobs:
       - run: chmod +x android/gradlew && cd android && ./gradlew --no-daemon assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: AssetRecord-android-apk
+          name: AssetRecord-android-apk-v${{ github.run_number }}
           path: native/android/app/build/outputs/apk/debug/app-debug.apk
