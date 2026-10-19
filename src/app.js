@@ -315,11 +315,20 @@
   }
 
   // ------------------------------------------------------------------ views
+  // animated PEO logo (inlined by tools/build.py); it plays once, later sign-in screens show it settled
+  let peoPlayed = false;
+  function peoLogo() {
+    const el = h("div", { class: "peo-mark" + (peoPlayed ? " peo-static" : "") });
+    const src = document.getElementById("peo-logo");
+    if (src) { el.innerHTML = src.textContent; peoPlayed = true; } else el.append(h("span", { class: "logo lg", text: "AR" }));
+    return el;
+  }
+
   /** SAP Fiori logon layout: branded background, centred card, no shell bar. */
   function logon(...content) {
     app.replaceChildren(h("div", { class: "logon" },
       h("div", { class: "logon-card" },
-        h("div", { class: "logon-brand" }, h("span", { class: "logo lg", text: "AR" }),
+        h("div", { class: "logon-brand peo" }, peoLogo(),
           h("div", null, h("div", { class: "logon-title", text: "Asset Record" }), h("div", { class: "logon-sub", text: "Asset & Functional Location Survey" }))),
         ...content),
       h("p", { class: "logon-foot", text: Store.master ? `Master data ${Store.master.version || "-"}${Store.master.demo ? " · demo" : ""} · works offline` : "Works offline on iPhone, Android and PC" })));

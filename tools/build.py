@@ -65,9 +65,11 @@ open(os.path.join(DIST, "demo-master.json"), "w", encoding="utf-8").write(demo_j
 css = open(os.path.join(SRC, "styles.css"), encoding="utf-8").read()
 logic = open(os.path.join(SRC, "logic.js"), encoding="utf-8").read() + "\n" + open(os.path.join(SRC, "xlsread.js"), encoding="utf-8").read()
 appjs = open(os.path.join(SRC, "app.js"), encoding="utf-8").read()
+peo_logo = open(os.path.join(SRC, "peo-logo.svg"), encoding="utf-8").read().strip().replace("</script", "<\\/script")
 safe_demo = demo_json.replace("</", "<\\/")
 body = f"""<div id="app"></div>
 <script type="application/json" id="demo-master">{safe_demo}</script>
+<script type="image/svg+xml" id="peo-logo">{peo_logo}</script>
 <script>{logic}</script>
 <script>{appjs}</script>"""
 
