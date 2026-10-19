@@ -178,6 +178,10 @@ h2 { font-size: 20px; margin: 0; font-weight: 700; text-wrap: balance; }
 .logo.lg, .bar .logo { width: 30px; height: 30px; border-radius: 8px; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font: 700 12px/1 var(--f-ui); flex: none; }
 .logo.lg { width: 44px; height: 44px; border-radius: 12px; font-size: 16px; }
 .logon-title { font-size: 20px; font-weight: 700; }
+.logon-brand.peo { flex-direction: column; gap: 6px; text-align: center; }
+.peo-mark { width: min(210px, 62vw); line-height: 0; }
+.peo-mark svg { display: block; width: 100%; height: auto; }
+.peo-static .peo-logo *:not(.shine) { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
 .logon-sub { font-size: 13px; color: var(--muted); }
 .logon-h { font-size: 18px; }
 .logon-form { display: grid; gap: 12px; }
